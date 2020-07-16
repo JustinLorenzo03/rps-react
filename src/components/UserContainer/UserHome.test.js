@@ -1,18 +1,25 @@
 import React from 'react';
-import UserHome from './UserHome';
 import { shallow } from 'enzyme';
-
-describe('Testing the UserHome function with enzyme', () => {
-    it('knows h1 tag', () => {
+import UserHome from './UserHome';
+describe('UserHome Component', () => {
+    it('only has 1 h5 in UserHome', () => {
         const wrapper = shallow(<UserHome />);
         const text = wrapper.find('h5');
         expect(text).toHaveLength(1);
     })
-})
-describe('working the h1 tag', () => {
-    it('knows to print out Login In', () => {
+    it('check if UserHome message is visible', () => {
         const wrapper = shallow(<UserHome />);
         const text = wrapper.find('h5').text();
         expect(text).toEqual("Welcome User");
+    })
+    it('logout button is clicked',() => {
+        const wrapper = shallow(<UserHome />);
+        const LogoutButton = wrapper.find('LogoutButton');
+        LogoutButton.simulate('click');
+    })
+    it('Rules button is clicked',() => {
+        const wrapper = shallow(<UserHome />);
+        const RulesButton = wrapper.find('RulesButton');
+        RulesButton.simulate('click');
     })
 })
